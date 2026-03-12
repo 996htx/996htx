@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const { initDb } = require('./database');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -16,6 +17,11 @@ app.use('/api/photos', require('./routes/photos'));
 
 app.get('/api/health', (req, res) => res.json({ status: 'ok', time: new Date().toISOString() }));
 
-app.listen(PORT, () => {
-  console.log(`TimeTrack API running on http://localhost:${PORT}`);
+initDb().then(() => {
+  app.listen(PORT, () => {
+    console.log(`TimeTrack API running on http://localhost:${PORT}`);
+  });
+}).catch(err => {
+  console.error('Failed to initialize database:', err);
+  process.exit(1);
 });

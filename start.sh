@@ -12,7 +12,6 @@ echo ""
 echo "📦 Installing backend dependencies..."
 cd "$ROOT/backend"
 npm install --silent
-npm rebuild better-sqlite3 --silent 2>/dev/null || true
 
 # Install frontend deps
 echo "📦 Installing frontend dependencies..."
