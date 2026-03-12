@@ -1,0 +1,7 @@
+node_modules/
+backend/uploads/*
+backend/timetrack.db
+backend/timetrack.db-shm
+backend/timetrack.db-wal
+frontend/dist/
+.env
